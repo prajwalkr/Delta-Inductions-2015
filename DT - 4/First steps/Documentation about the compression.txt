@@ -1,0 +1,37 @@
+****************** VIEW MAXIMIZED*****************
+
+The basic concepts still remain the same.
+
+Only here, a new algorithm(function in views.py) is added which compresses the text and stores it as '1's and '0's. The algorithm used is the Huffman coding algorithm.
+The algorithm is described below:
+
+1. Create a heap of the dictionary [letters,count] for all distinct letters in the text and count = text.count(letter) 
+   Note that the heap is ****ordered based upon the frequency of the letters*********.
+   The Python heapq class by default creates a min heap and a heappop() operation takes out the letter with least frequency
+
+2. WHILE heap-size >= 2, we do:
+	1. Pop the two least frequency letters from the heap. 
+	2. Here, in my code, ************instead of creating a Binary tree, I make use of the Python dictionary, but concept is the same.*********** 
+           In the [count, [[char1, ''],[char2,''],.......] the last strings for each letter, ('' initially) represents the code for that particular letter.
+           It can be noted that the list [[char1, ''],[char2,''],.......] is nothing but a list of children of the node with val = count 
+        3. Let the lesser freq element = lo  and higher freq element = hi
+        4. Clearly 'lo' goes left in the Binary Tree and 'hi' goes right. 
+           Now, we are going bottom up building of a Binary Tree. 
+           ******That means the updated-code for the character(s) in 'lo' is '0' + the current_code (because,'lo' (and all the nodes under it) go(es) left)
+           ******Also, the updated-code for the character(s) in 'hi' is '1' + current_node(because, 'hi' (and all the nodes under it) go(es) right)
+	5. After we update the code, we fuse these two into one with a val = hi[0] + lo[0] (sum of the least two freq.) and hence:  
+                                                       _____
+						       |val|     val = freq1 + freq2
+						       |___|
+						        /\
+				     [freq1,[char1,'0']]  [freq2,[char2,'1']]
+
+	   Now if in the next step, val goes to the left then, the codes of the nodes with char1 and char2 are '00' and '01' respectively.
+
+        6. This fused node is re-inserted back into the heap. And goto step 2. [Pop least two....]
+        7. As said above, the code string is updated accordingly and finally the code obtained from Huffman algorithm is the sum(individual_codes_of_each_letters)
+        8. Return this code string.
+        9. End of the algorithm.
+
+							
+	

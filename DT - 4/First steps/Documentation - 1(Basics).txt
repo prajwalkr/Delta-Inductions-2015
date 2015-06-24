@@ -1,0 +1,46 @@
+***************************   Open Maximised    ***********************************
+
+
+The best thing about Django is that it follows the idea of MVC.
+
+Let's start with the M - models.py:
+
+1. The Databases are abstracted as a class in models.py 
+2. The class represents a databases whereas each 'variable' in the class is a field of the database table.
+3. Django automatically declares an IntegerField as "primary-key", if there's no IntegerField then, the Django creates one "hidden field" to use it as a primary-key.
+   In my project, it raised an error because, I was trying to use the 'name'(str) as a primary-key in views.py without declaring it as primary-key in models.py 
+4. Each field is specified as "CharField", IntField, "FloatField" to give Django enough information to create the table. 
+
+Next we go to the views.py
+
+1. views - takes a request and generates a response. This request-response process of the webpage is abstracted as 'methods' or 'functions'.
+2. I have created a method 'process_form(request)'. 
+3. In Django, I have convinced myself that there are only two operations on forms: 'GET' or 'POST'. Hence, we just write what should happen if the request is 'GET' and    what should occur if the request is 'POST'.
+4. If the request is 'GET':
+	1. Display a form on the web-page, which is done by sending the 'form' object as a parameter to the HTML template which displays the form. 
+	2. The response is rendered into web-format using a 'Django-shortcut' render(request, <text to render, usually html file>, {parameters to the html file})
+	3. The HTML form isn't just raw HTML. It has to be rendered after passing the appropriate parameters, which is done by the Django template handlers. 
+	4. The HTML file also specifies the action to take on pressing the submit button: it redirects to a new URL, creating another 'request'. Now this request has 		   to be handled. This is done by the 'POST' part of the 'process_form(request)' in views.py
+5. Since the request is now 'POST':
+	1. Get the form data.
+	2. Check for validity of the data.
+	3. If invalid --> return a HttpResponse saying that the form is invalid.
+	4. Create a new instance of the database class. That is we are actually going to add a new row. 
+	5. And store each of the field data from the form in the fields of the database row, which is abstracted as passing arguments to a constructor.
+	6. Redirect after submission: display a HTML file in a new url which, in our program, just reads from the database and displays.
+
+Next we go to the Controller modules - urls.py
+
+1. There are two of them - one in the 'app' directory and another in the project-directory. ****Let the former be 1url and the latter be 2url****
+2. All the urls are first checked against the list 'urlpatterns' in 2url and then the appropriate 1url is called by an include() method. The url matching uses regex. A    simple, quick read in the Django-docs will help understand how the url is matched.
+3. The 2url executes the appropriate method in views to process the request.
+
+We will also look into forms.py -:
+
+1. Each form is an instance of the forms class.
+2. Each form field is specified several parameters to help Django check for form validity. 
+
+HTML Files:
+
+1. The HTML files also have to be specified with {%csrf_token%} to protect from forgery. 
+2. The text to be read as a parameter should be inside {{ }} so that the Django Template Language will render it appropriately.
