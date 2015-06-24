@@ -1,0 +1,83 @@
+****Question 1*******
+Dynamic programming is a style of programming where you remember the previously done calculations or operations instead of re-doing the same thing over and over again.
+
+Eg:
+
+def fib(n):
+	if n == 0:
+		return 0
+	if n == 1:
+		return 1
+	else return fib(n-1) + fib(n-2)
+
+
+The recursion tree of the above code is: [n = 5, say]
+
+			fib(5)
+			 /\
+			/  \
+		       /    \
+                 fib(4)      fib(3)
+                  /\          /\
+		 /  \        /  \
+           fib(3)   fib(2)fib(2) fi(1)
+           /\        .   .  ..  .. . ..       
+	  /  \       . . . .   .. .  .
+    fib(2)    fib(1) . . . .......... . 
+
+We can see in the above example how many times fib(2), fib(1) fib(3) are called.
+The complexity becomes O(2^n)
+
+Instead we do the following:
+
+def fib(n):
+	if n == 0:
+		return 0
+	if n == 1:
+		return 1
+	if dp[n] != -1:
+		return dp[n]
+	else:
+	   dp[n] = fib(n-1) + fib(n-2)
+	   return dp[n]
+
+Hence, using DP, we have reduced the time complexity to O(n)
+
+
+*********Question 2********
+The total number of "significantly time consuming CPU" steps involved in solving a given problem is a function of the problem size. This is called the time-complexity.
+By "significantly time consuming CPU steps", I mean that those steps like "%", "/" , array-accesses etc. which take much more amount of time compared to the simple addition and hence they are the main contributors to the running time of the program.
+
+The working storage capacity needed for a program to be executed is a function of the input size and is called the space-complexity. 
+Usually, in most of the practical environments, the data structures which occupy contiguous memory locations such as an array are the ones who contribute majorly to space complexity. 
+
+*********Question 3*********
+Binary search is a Divide-and-conquer algorithm. 
+At each step, the problem is divided into half. Hence, when there is no more possibility of dividing further, the number of steps would be almost:
+|_log2(n)_| steps. 
+And at each of this step there's only one array access. Hence, by the time we reach the answer, we would have done |_log(n)_| array accesses.
+Which leads to the complexity O(logn)
+The above can be proved by using a recursion tree, which will lead to a binary tree of height at most log2(n).
+
+*********Question 4**********
+This is my understanding.
+Windows OS keeps an index of the files in the filesystem.
+That is, it keeps all the files in an order as in a English dictionary type.
+Say : delta.txt
+It will be in the list of files starting with 'd' and then in that there will be subcategories, as to files beginning with "de" then with "del.." etc.
+Hence, it doesn't have to go through all files in the filesystem while searching. Suppose I search for delta.txt; it begins by jumping to 'd' and then to "de"...
+So, I think something similar is the implementation of the filesystem search in Windows.
+
+*********Question 5*********
+x86  -> 32-bit
+x64  -> 64-bit
+
+A 32-bit machine represents that the data bus in our computer which travels between the CPU and the main memory can in one go carry only 32-bits of data.
+Whereas 64-bit machine can carry double of that. 
+Hence 64-bit machines are more advanced.
+
+********Question 6***********
+Refer fib(logn time).cpp; 
+It is almost a copy paste of one of my codes in the contest. And that was taken from GeeksforGeeks a long time ago. 
+I know the concept though. 
+Uses the matrix-representation of Fibonnaci numbers and uses Fast binary exponentiation to compute the nth fibonnaci number in O(logn) time.

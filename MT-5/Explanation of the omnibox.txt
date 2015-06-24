@@ -1,0 +1,10 @@
+So, after goin to chrome://version
+I get:
+JavaScript	V8 4.3.61.23
+
+Now for the omnibox( chrome://omnibox/ ):
+After typing my name and clicking submit:
+	It gives search results from various sources, sorted in the descending order
+	of relevance. The Internet search result (from google.co.in) has the highest
+	relevance. Next are from the history. 
+	The relevance of the history results are probably decided based on the 		frequency of visiting that particular link. 

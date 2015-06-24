@@ -1,0 +1,14 @@
+1. A computer or computer program which manages access to a centralized resource or service in a network is called a server.
+
+2. A localhost is the standard host name provided to the address of the local computer in computer networking. It uses the loopback IP address,I guess, which is usually 127.0.0.1
+
+3. A loopback that allows client software to communicate with server software on the same computer. The loopback address is usually 127.0.0.1 which will point back to the computer's network again.
+
+4. If multiple web servers/loopbacks are running on the same localhost in a particular situation then we need multiple addresses. So, there are 16,777,214 addresses.
+
+5. XAMPP is an easy to install Apache distribution containing MySQL, PHP and Perl.
+   phpmyadmin is a tool written in PHP intended to handle the administration of MySQL over the WWW.
+
+7. htdocs is the directory that the web server software (Apache) looks for files to serve on your domain. 
+
+8. Client side (browser) where user types his/her query and web browser sends request to server side which then reads the query and in response provides respective data to the client in HTML format. This repetitive response between client and server is called the client server mechanism.
