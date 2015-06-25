@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+  <body>
+    <canvas id="myCanvas" width="1300" height="600"></canvas>
+    <script>
+      function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+          x: evt.clientX - rect.left,
+          y: evt.clientY - rect.top
+        };
+      }
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      context.fillStyle = "red";
+      context.fillRect(0,0,1300,600);
+      context.fillStyle = "white";
+      context.fillRect(0,0,200,200);
+      context.fillStyle = "blue";
+      context.fillRect(0,400,200,200);
+      context.fillStyle = "green";
+      context.fillRect(1100,0,200,200);
+      context.fillStyle = "yellow";
+      context.fillRect(1100,400,200,200);
+      canvas.addEventListener('click', function(evt) {
+        var mousepos = getMousePos(canvas,evt);
+        if(mousepos.x <= 200 && mousepos.y <= 200){alert('White');}
+        else if (mousepos.x <= 200 && mousepos.y >= 400) {alert('Blue');}
+        else if (mousepos.x >= 1100 && mousepos.y <= 200) {alert('Green');}
+        else if (mousepos.x >= 1100 && mousepos.y >= 400) {alert('Yellow');}
+        else {alert('Click inside colored boxes');}
+      }, false);
+    </script>
+  </body>
+</html>

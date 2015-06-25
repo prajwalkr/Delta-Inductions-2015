@@ -1,0 +1,10 @@
+'GET' is for reading data from somewhere and displaying it.
+Eg: Displaying a form in a webpage.
+
+'POST' is for getting and writing the data into a server side database table etc. 
+
+That is, suppose a form is submitted, the method invoked is 'POST', because, it is used to retrieve this data and write it into the database on the server side as we implemented in an app using Django framework (DT 4)
+
+So, when we click the submit button, the form data is submitted to the server. This is done by a redirecting the page to a new url which is appended by the form data.
+
+Eg: "www.abc.com/?name=prajwal&class=2"
