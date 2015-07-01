@@ -1,0 +1,39 @@
+Segment trees:
+
+Let's say, we have a database of a supermarket:
+
+Product       Cost
+
+Pencil         10
+Pen 	       15
+Eraser          5
+Refill          7
+Pen drive     200
+Cadbury Silk  150
+Headset       185
+'              '
+'              ' 
+'              '
+(And million other items)
+Now, say, the market rates, obviously, change quite fast and should be hence constantly updated. ----> Query type 1 on the database: Updation of ith cost.
+
+Also, we need to get say: "Minimum cost product in the range of serial numbers[6,12]" or "Sum of costs of products with serial numbers [9,95]"  ----> Query type 2.
+
+We can see that the following scenarios are possible:
+1. Updation O(1); Sum O(n)
+2. Updation O(n)[by maintaining a prefix array]  and sum in O(1)
+
+Now:
+#1 fails when there are a lot of Type 2 queries, like sum, or finding minimu cost. 
+#2 fails when there are a lot of Type 1 queries, that is updation.
+
+Hence, the way to solve this problem is using a Segment Tree, which does both these queries in O(logn) time.
+
+A segment tree is a binary tree data structure which stores intervals, or segments.
+And performs queries of the above kind in O(logn) time.
+
+The problem statement can be the above example itself. 
+
+Given n products with their prices, handle those two types of queries.
+1 <= n,q <= 10**5
+
