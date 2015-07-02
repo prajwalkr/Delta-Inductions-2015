@@ -1,0 +1,6 @@
+MySQL is an open-source database management system. It uses SQL(Structured query language) for managing the content of the database. 
+
+Also, MySQL is Relational Database Management System.(RDBMS)
+
+NoSQL ~ Not only SQL implies tgat their databases differ slightly than relational databases. They do support SQL-like queries, but are able to do them faster and hence find applications in Big-data and Real-time web apps. 
+

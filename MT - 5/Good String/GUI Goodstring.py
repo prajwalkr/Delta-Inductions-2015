@@ -51,7 +51,7 @@ sentence.focus()
 
 text = Text(width = 35,height = 3,wrap = WORD)                                      # Result text display box
 text.grid(row = 10,column = 0, sticky = W)
-
+text.delete('1.0',END)
 convert = Button(app, text = "Convert!",command = program)                          # Convert button
 convert.grid(row = 5,rowspan = 1,column = 0)
 

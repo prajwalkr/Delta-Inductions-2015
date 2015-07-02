@@ -1,0 +1,24 @@
+My URL shortener app will generate a *unique* shortened url for each entered URL
+How is this made possible?
+
+I have a text file say, 'prev_id.txt' which stores a whole number in base 10 called 'id'. This digit is crucial to generate a shortened URL or to regenerate the lengthened URL from the shortened URL.
+
+For creating the shortened URL, we have the following:
+
+a 'charmap' containing : "abc....zABC...Z012345...9"
+
+And we also have id to the base 62.
+
+Hence, for every id in base 10, we have a unique base 62 number and each digit of the base62 number can correspond to a unique character in charmap.
+
+Hence, say we have id=63, then its base62 is '11'
+Hence a unique sequence of characters can be generated corresponding to '11' using the charmap, which gives '11' ---> 'aa'
+
+Then we update the id in the "prev_id.txt" to id+1
+Hence when the next url is shortened, we will have id=64, hence the sequence of characters will be 'ba'.
+
+To retrieve back the original url from the shortened one, we get the sequence of characters, say 'ba'.
+From the 'charmap' we get 'ba' corresponds to '21', from that, 2*(62^0) + 1*(62^1) = 64 = the id of the url.
+We query for the url using the 'id' in the database and return it!
+
+Simple innit? :P
